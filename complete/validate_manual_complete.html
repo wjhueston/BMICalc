@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manual Validation</title>
+
+    <style>
+        body {
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 12px;
+            padding: 20px;
+        }
+
+        fieldset {
+            width: 560px;
+        }
+
+        label {
+            width: 150px;
+            display: block;
+        }
+
+        .error {
+            color: #F60;
+            font-size: 10px;
+            padding-left: 10px;
+        }
+
+        #surprise {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+<fieldset>
+    <legend>Fill out the form correctly and you get a surprise</legend>
+    <form id="theForm">
+
+        <p>
+            <label for="firstName">First Name (Required)</label>
+            <input id="firstName" name="firstName" type="text">
+            <span class="error" id="firstNameError"></span>
+        </p>
+
+        <p>
+            <label for="age">Age (Must Be Over 13)</label>
+            <input name="age" id="age" type="text">
+            <span class="error" id="ageError"></span>
+        </p>
+        <input type="submit" id="submitButton" value="Submit">
+    </form>
+</fieldset>
+<p>
+    <img src="surprise.jpg" width="580" height="250" alt="Surprise!" id="surprise">
+</p>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script>
+    $(function () {
+        $("#theForm").submit(displaySurprise);
+    });
+
+    function displaySurprise() {
+        // Clear out any existing errors
+        $(".error").html("");
+        // Re-hide the surprise
+        $("#surprise").hide();
+
+        // Tracks whether or not the form is filled out correctly
+        var isValid = true;
+
+        // Validate the required field
+        var firstName = $("#firstName").val();
+
+        // If the field was left blank, its value will be the empty string
+        if (!firstName) {
+            // Display an error
+            $("#firstNameError").html("This field is required");
+            // Flip the flag to false, so we know not to display the surprise
+            isValid = false;
+        }
+
+        var age = parseFloat($("#age").val());
+
+        // If the value couldn't parse to a number, it will be NaN
+        if (isNaN(age)) {
+            // Display an error
+            $("#ageError").html("Must enter a number");
+            // Flip the flag to false, so we know not to display the surprise
+            isValid = false;
+        } else if (age != Math.round(age)) {
+            // Display an error
+            $("#ageError").html("Must enter an integer");
+            // Flip the flag to false, so we know not to display the surprise
+            isValid = false;
+        } else if (age < 13) {
+            // Display an error
+            $("#ageError").html("Must be older than 13");
+            // Flip the flag to false, so we know not to display the surprise
+            isValid = false;
+        }
+
+        // Only show the surprise if the form was valid
+        if (isValid) {
+            // This only happens if all of the user input was valid
+            $("#surprise").show();
+        }
+
+        return false;
+    }
+</script>
+
+</html>

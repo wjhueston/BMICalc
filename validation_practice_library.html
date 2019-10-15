@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Library: JavaScript Camp</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: bisque;
+        }
+
+        fieldset {
+            width: 50%;
+            background-color: white;
+        }
+
+        legend {
+            font-weight: bold;
+        }
+
+        label.error {
+            /* Add a style here for your error messages */
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to JavaScript Camp! For kids in 5th through 8th grade.</h1>
+    <fieldset>
+        <legend>Registration</legend>
+        <form id="theForm">
+            <p>
+                <label for="firstName">First Name (Required)</label>
+				
+                <input id="firstName" name="firstName" type="text" />
+				
+				
+            </p>
+            <p>
+                <label for="grade">Grade (5-8)</label>
+                <input name="grade" id="grade" type="text" />
+            </p>
+            <input type="submit" id="submitButton" value="Register" />
+        </form>
+    </fieldset>
+    <p id="message"></p>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.js"></script>
+<script>
+    $(init);
+
+
+    function init() {
+
+        // Object containing the validation rules
+        var myRules =
+            {
+
+            };
+
+        // Object containing the error messages
+        var myMessages =
+            {
+
+            };
+
+        // Object containing the entire validation configuration
+        // Needs submitHandler, rules, and messages properties
+        var config = {
+
+        };
+
+        // Pass the config object to the form's validate() method
+        $("form").validate(config);
+    }
+
+
+    function runMyProgram() {
+        // Change the HTML of the <p> with ID of "message" to
+        // state, for example, "You have registered Jane for grade 6 camp!"
+        // Use the name and grade the user provided.
+
+
+
+    }
+
+</script>
+
+</html>
