@@ -9,7 +9,8 @@ $(document).ready(function () {
             {
                 min: 5,
                 max: 8,
-                digits: true
+                digits: true,
+                required: true
             }
         };
     var myMessages =
@@ -22,7 +23,8 @@ $(document).ready(function () {
                 {
                     min: "Too Low",
                     max: "Too High",
-                    digits: "Wrong"
+                    digits: "Wrong",
+                    required: "Put something in here."
                 }
         };
     $("form").validate(
