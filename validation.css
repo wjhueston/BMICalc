@@ -1,20 +1,5 @@
 body {
-    background-color: bisque;
     text-align: center;
-}
-
-fieldset {
-    background-color: white;
-    padding: 25px;
-    text-align: left;
-}
-
-legend {
-    font-weight: bold;
-}
-
-.btn, .btn:hover {
-    background-color: darkgreen;
 }
 
 #message {
@@ -22,5 +7,5 @@ legend {
 }
 
 label.error {
-    /* Add a style here for your error messages */
+    color: red;
 }

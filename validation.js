@@ -1,30 +1,36 @@
 $(document).ready(function () {
     var myRules =
         {
-            firstName:
+            height:
             {
-                required: true
+                required: true,
+                min: 59,
+                max: 79,
+                digits: true
             },
-            grade:
+            weight:
             {
-                min: 5,
-                max: 8,
-                digits: true,
-                required: true
+                min: 88,
+                max: 353,
+                required: true,
+                digits: true
             }
         };
     var myMessages =
         {
-            firstName:
+            height:
                 {
-                    required: "Put something in here."
+                    required: "Put a number in here",
+                    min: "Too Low",
+                    max: "Too High",
+                    digits: "Put a number in here"
                 },
-            grade:
+            weight:
                 {
                     min: "Too Low",
                     max: "Too High",
-                    digits: "Wrong",
-                    required: "Put something in here."
+                    required: "Put a number in here",
+                    digits: "Put a number in here"
                 }
         };
     $("form").validate(
@@ -37,10 +43,25 @@ $(document).ready(function () {
     );
 
     function runMyProgram() {
-        var name = $("#firstName").val()
-        var grade = $("#grade").val()
-        $("#message").text(`You have successfully registered ${name} for grade ${grade} camp.`)
-
+        var weight = parseInt($("#Weight").val());
+        var height = parseInt($("#Height").val());
+        var heightsq = height * height;
+        var unfinishedBMI = weight/heightsq
+        var bmi = unfinishedBMI*703
+        var category
+        if(bmi < 18.5){
+            category = "underweight"
+        }
+        else if(bmi >= 18.5 && bmi < 25){
+            category = "normal"
+        }
+        else if(bmi >= 25 && bmi < 30){
+            category = "overweight"
+        }
+        else{
+            category = "obese"
+        }
+        $("#message").text("You have a Body-Mass Index of " + bmi.toFixed(2) + " which makes you " + category + ".")
 
     }
 
